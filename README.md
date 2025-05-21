@@ -4,7 +4,7 @@
 
 ## Population
 
-원본 파일 다운로드 URL
+Original File Download URL
 
 - https://earth.gov/ghgcenter/data-catalog/sedac-popdensity-yeargrid5yr-v4.11
 - https://data.ghg.center/browseui/index.html#sedac-popdensity-yeargrid5yr-v4.11/
@@ -19,14 +19,6 @@
 | gpw_v4_population_density_rev11_2015_30_sec_2015.tif | tif       | 2024. 7. 30. 오전 3:36:33 | 406.5 MB |
 | gpw_v4_population_density_rev11_2020_30_sec_2020.tif | tif       | 2024. 7. 30. 오전 3:36:54 | 406.7 MB |
 
-각 tif 파일을 csv 파일로 변환하면 각각 9.82 GB 정도의 csv 파일이 생성되고,
-이 파일들의 사이즈가 너무 커서 한국의 경위도에 해당하는 다음 조건으로 데이터를 추출하면
-
-- 33 <= y(위도) <= 39
-- 124 <= x(경도) <= 132
-
-각 파일이 10.4 MB 파일로 최종 생성됨.
-
 - Temporal Extent: 2000 - 2020
 - Temporal Resolution: Annual, every 5 years
 - Spatial Extent: Global
@@ -34,3 +26,39 @@
 - Data Units: Number of persons per square kilometer (persons/km²)
 - Data Type: Research
 - Data Latency: 5 years
+
+### Data Directory Structure
+
+- base directory : data/population
+- original file directory : data/population/raw/\*.tif
+- converted file directory : data/population/csv/\*.csv
+- filtered file directory : data/population/filtered/\*.csv
+
+### 1. tif to csv
+
+- Input : original file directory
+- Output : converted file directory
+
+Converting each TIF file to a CSV file will generate a CSV file of approximately 9.82 GB.
+
+각 tif 파일을 csv 파일로 변환하면 각각 9.82 GB 정도의 csv 파일이 생성됨.
+
+```bash
+python src/population/tif_to_csv.py
+```
+
+### 2. csv filtering
+
+- Input : converted file directory
+- Output : filtered file directory
+
+The resulting CSV files are quite large. However, if you extract the data using the following conditions, which cover South Korea's latitude and longitude, each file will be reduced to roughly 10.4 MB.
+
+생성된 csv 파일들의 사이즈가 커서 한국의 경위도에 해당하는 다음 조건으로 데이터를 추출하면 각 파일이 10.4 MB 파일로 최종 생성됨.
+
+- 33 <= y (latitude, 위도) <= 39
+- 124 <= x (longitude, 경도) <= 132
+
+```bash
+python src/population/filter_large_csv.py
+```
