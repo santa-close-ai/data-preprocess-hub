@@ -58,39 +58,6 @@
 
   - 화점 발생 여부 플래그: 1(신뢰도 > 30%), 0(≤ 30%)
 
-## 그리드 복원 공식
-
-```python
-lat = ((grid_id // 3600) - 900) * 0.1 + 0.05
-lon = ((grid_id % 3600) - 1800) * 0.1 + 0.05
-```
-
-## 사용 예시
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# 데이터 로드
-df = pd.read_csv('af_flag_raw_by_grid.csv', parse_dates=['date'])
-
-# 그리드 → 위도·경도 복원
-df['lat'] = ((df['grid_id']//3600)-900)*0.1 + 0.05
-df['lon'] = ((df['grid_id']%3600)-1800)*0.1 + 0.05
-
-# af_flag==1인 화점만 필터링
-df_fire = df[df['af_flag']==1]
-
-# 예시: 2020년 화점 분포 산점도
-df_2020 = df_fire[df_fire['date'].dt.year==2020]
-plt.figure(figsize=(6,6))
-plt.scatter(df_2020['lon'], df_2020['lat'], s=5, alpha=0.5)
-plt.title('2020년 화점 분포')
-plt.xlabel('경도'); plt.ylabel('위도')
-plt.xlim(124, 132); plt.ylim(33, 39)
-plt.grid(True, linestyle='--', linewidth=0.5)
-plt.show()
-```
 
 ## 연도별 화점 분포 시각화
 
