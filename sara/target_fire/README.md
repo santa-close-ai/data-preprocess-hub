@@ -11,6 +11,8 @@
 - **전처리 데이터**:
    - af_flag_archive.csv : 2000.11월~2025.01월 화점 데이터
    - af_flag_nrt.csv : 2025.02월~2025.05.19일 화점 데이터
+   - af_flag_full_combined.csv : csv 통합파일 
+   - af_flag_full_combined.parquet : parquet 통합파일 -> 사용추천
 
 ## 전처리 단계
 
@@ -25,7 +27,7 @@
 3. **화점 플래그(af_flag) 생성**
 
    - `confidence`가 30초과인 경우 `1`, 30이하인 경우 `0`으로 표시
-   - 클래스 불균형 해결을 위해 화점이 없었던 (date, grid_id) 조합을 생성하여 af_flag=0으로 추가
+   - 클래스 불균형 해결을 위해 화점이 없었던 (date, grid_id) 조합을 생성하여 `af_flag=0`으로 추가
    - `uint8` 타입으로 저장하여 메모리 최적화
 
 4. **그리드 식별자(grid_id) 부여**
