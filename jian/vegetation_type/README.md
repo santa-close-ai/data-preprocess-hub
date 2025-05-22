@@ -54,5 +54,5 @@ jian/
 
 ## 담당
 
-- 작성자: jianppark
+- 작성: jianppark
 ```
