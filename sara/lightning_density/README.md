@@ -56,11 +56,10 @@
 
 ## 5. 이미지 삽입 예시
 
-리포지토리에 업로드한 `lightning_density_by_grid.png` 이미지를 README에 아래와 같이 표시할 수 있습니다. 이 이미지는 0.1° 격자별 평균 번개 밀도를 색상으로 표현한 산점도입니다:
+이 이미지는 전처리된 lightning_density_KOR.csv 파일의 평균 번개 밀도를 색상으로 표현한 산점도입니다:
 
-```markdown
-![Average Lightning Density Map](lightning_density_by_grid.png)
-```
+![Average Lightning Density Map](./lightning_density_by_grid.png)
+
 
 ## 6. 강도구간(Quartile) 설명
 
@@ -87,4 +86,4 @@
 
 ---
 
-작성일: YYYY-MM-DD
+작성일: 2025-05-22
