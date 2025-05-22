@@ -33,6 +33,7 @@ Original File Download URL
 - original file directory : data/population/raw/\*.tif
 - converted file directory : data/population/csv/\*.csv
 - filtered file directory : data/population/filtered/\*.csv
+- grid file directory : data/population/grid/\*.csv
 
 ### 1. tif to csv
 
@@ -61,4 +62,19 @@ The resulting CSV files are quite large. However, if you extract the data using 
 
 ```bash
 python src/population/filter_large_csv.py
+```
+
+### 3. transform geocode to grid_id
+
+- Input : filtered file directory
+- Output : grid file directory
+
+input csv header : x,y,value
+
+output csv header : grid_id,value
+
+grid_id = (y*10 + 900) * 3600 + (x\*10 + 1800)
+
+```bash
+python src/population/geocode_to_grid.py
 ```
