@@ -1,5 +1,7 @@
 # data-preprocess-hub
 
+This repository serves as a centralized location for team members to share and organize algorithms for wildfire prediction data collection and preprocessing.
+
 산불예측용 데이터 수집과 전처리 알고리즘을 팀원 간에 공유 및 정리하기 위한 레포지토리입니다.
 
 ## Population
@@ -35,7 +37,9 @@ Original File Download URL
 - filtered file directory : data/population/filtered/\*.csv
 - grid file directory : data/population/grid/\*.csv
 
-### 1. tif to csv
+### Preprocessing
+
+#### 1. tif to csv
 
 - Input : original file directory
 - Output : converted file directory
@@ -48,7 +52,7 @@ Converting each TIF file to a CSV file will generate a CSV file of approximately
 python src/population/tif_to_csv.py
 ```
 
-### 2. csv filtering
+#### 2. csv filtering
 
 - Input : converted file directory
 - Output : filtered file directory
@@ -64,7 +68,7 @@ The resulting CSV files are quite large. However, if you extract the data using 
 python src/population/filter_large_csv.py
 ```
 
-### 3. transform geocode to grid_id
+#### 3. transform geocode to grid_id
 
 - Input : filtered file directory
 - Output : grid file directory
