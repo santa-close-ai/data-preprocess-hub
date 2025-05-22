@@ -81,6 +81,7 @@ file_list_csv = [file for file in file_list if file.endswith(".csv")]
 output_dir = os.path.join(base_dir, 'filtered') # Define output directory
 os.makedirs(output_dir, exist_ok=True) # Create output directory if it doesn't exist
 
+# Example usage:
 for input_file_name in file_list_csv:
     org_file = os.path.join(input_dir, input_file_name)
     out_file = os.path.join(output_dir, input_file_name)
