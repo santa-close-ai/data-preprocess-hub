@@ -148,10 +148,10 @@ for info in datasets_info:
     # 원본 파일명에서 확장자 변경하여 CSV 파일명 생성
     file_path = os.path.join(origin_dir, subdir_name)
     file_list = os.listdir(file_path)
-    # file_list_nc = [file for file in file_list if file.endswith(".nc")]
-    file_list_nc = [file for file in file_list if '2021_12' in file and file.endswith(".nc")] # .nc 확장자 명시적 확인 추가
-    
-    # print(*file_list_nc, sep='\n')
+    file_list_nc = [file for file in file_list if file.endswith(".nc")]
+    # file_list_nc = [file for file in file_list if '2021_12' in file and file.endswith(".nc")] # .nc 확장자 명시적 확인 추가
+    file_list_nc.reverse()
+    print(*file_list_nc, sep='\n')
 
     for file_name in file_list_nc:
         csv_filename = os.path.splitext(file_name)[0] + '.csv'
