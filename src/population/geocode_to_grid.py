@@ -43,7 +43,10 @@ def transform_geocode_to_grid_id(input_csv_path, output_csv_path):
                     y_val = float(row[y_idx])
                     value = row[value_idx]
 
-                    grid_id = int((y_val * 10 + 900) * 3600 + (x_val * 10 + 1800))
+                    lat_bin = int(np.floor(y_val / 0.1))
+                    lon_bin = int(np.floor(x_val / 0.1))
+                    grid_id = int(lat_bin + 900) * 3600 + (lon_bin + 1800)
+                    # grid_id = int((y_val * 10 + 900) * 3600 + (x_val * 10 + 1800))
                     writer.writerow([grid_id, value])
                 except (ValueError, TypeError) as e:
                     print(f"Warning: Skipping row {row_num} in {input_csv_path} due to data conversion error: {row} - {e}")
