@@ -20,7 +20,7 @@ for lat in lat_vals:
 df = pd.DataFrame(data, columns=["grid_id", "lat", "lon", "geometry"])
 gdf = gpd.GeoDataFrame(df, geometry="geometry", crs="EPSG:4326")
 
-urban_tif_path = "C:\Users\USER\Desktop\data-preprocess-hub\jian\urban_frac\USurf_1km_geotiff_v1.1\global_PCT_URBAN_1km_masked_QC_v1.1.tif"
+urban_tif_path = "C:/Users/USER/Desktop/data-preprocess-hub/jian/urban_frac/USurf_1km_geotiff_v1.1/global_PCT_URBAN_1km_masked_QC_v1.1.tif"
 
 # zonal_stats로 각 격자의 urban fraction 평균값 계산
 print("Urban Fraction 평균 계산 ing..")
