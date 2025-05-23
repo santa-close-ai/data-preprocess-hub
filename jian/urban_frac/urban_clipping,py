@@ -27,5 +27,5 @@ print("Urban Fraction 평균 계산 ing..")
 zs = zonal_stats(gdf["geometry"], urban_tif_path, stats=["mean"], nodata=-9999)
 gdf["urban_frac"] = [z["mean"] if z["mean"] is not None else 0 for z in zs]
 
-gdf[["grid_id", "lat", "lon", "urban_frac"]].to_csv("urban_fraction_korea.csv", index=False)
-print("저장 완료: urban_fraction_korea.csv")
+gdf[["grid_id", "lat", "lon", "urban_frac"]].to_csv("urban_frac_korea.csv", index=False)
+print("저장 완료: urban_frac_korea.csv")
