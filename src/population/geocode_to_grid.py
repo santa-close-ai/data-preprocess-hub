@@ -1,5 +1,6 @@
 import os
 import csv
+import numpy as np
 
 def transform_geocode_to_grid_id(input_csv_path, output_csv_path):
     """
