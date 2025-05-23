@@ -1,0 +1,31 @@
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import box
+from rasterstats import zonal_stats
+
+lat_vals = np.arange(33.0, 39.0, 0.1)
+lon_vals = np.arange(124.0, 132.0, 0.1)
+
+data = []
+grid_id = 0
+for lat in lat_vals:
+    for lon in lon_vals:
+        grid_id += 1
+        center_lat = lat + 0.05
+        center_lon = lon + 0.05
+        bbox = box(lon, lat, lon + 0.1, lat + 0.1)
+        data.append((grid_id, center_lat, center_lon, bbox))
+
+df = pd.DataFrame(data, columns=["grid_id", "lat", "lon", "geometry"])
+gdf = gpd.GeoDataFrame(df, geometry="geometry", crs="EPSG:4326")
+
+urban_tif_path = "C:\Users\USER\Desktop\data-preprocess-hub\jian\urban_frac\USurf_1km_geotiff_v1.1\global_PCT_URBAN_1km_masked_QC_v1.1.tif"
+
+# zonal_stats로 각 격자의 urban fraction 평균값 계산
+print("Urban Fraction 평균 계산 ing..")
+zs = zonal_stats(gdf["geometry"], urban_tif_path, stats=["mean"], nodata=-9999)
+gdf["urban_frac"] = [z["mean"] if z["mean"] is not None else 0 for z in zs]
+
+gdf[["grid_id", "lat", "lon", "urban_frac"]].to_csv("urban_fraction_korea.csv", index=False)
+print("저장 완료: urban_fraction_korea.csv")
