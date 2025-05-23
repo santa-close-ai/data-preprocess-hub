@@ -151,7 +151,7 @@ for info in datasets_info:
     file_list_nc = [file for file in file_list if file.endswith(".nc")]
     # file_list_nc = [file for file in file_list if '2021_12' in file and file.endswith(".nc")] # .nc 확장자 명시적 확인 추가
     file_list_nc.reverse()
-    print(*file_list_nc, sep='\n')
+    # print(*file_list_nc, sep='\n')
 
     for file_name in file_list_nc:
         csv_filename = os.path.splitext(file_name)[0] + '.csv'
