@@ -38,5 +38,5 @@ lon = ((grid_id % 3600) - 1800) * 0.1 + 0.05
 - **both**: 위 두 flag가 겹치는 경우 초록색(투명도0%) 적용.
 
 - **2001년\~2024년**
-  ![화점 분포](target_fire_af_flag2.png)
+  ![화점 분포](target_fire_af_flag2.png) 
 
