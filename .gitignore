@@ -16,6 +16,7 @@
 *.xml
 *.tif
 *.nc
+*.parquet
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
