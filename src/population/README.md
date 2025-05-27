@@ -99,3 +99,13 @@ csv header : grid_id,value,date
 ```bash
 python ./src/population/data_to_mean.py data/population/grid
 ```
+
+### 5. generate single parquet
+
+Combines all CSV files within a directory into a single Parquet file after sorting them by name.
+
+디렉토리에 안에 있는 모든 csv 파일을 이름 순으로 정렬 후에 하나의 parquet 파일로 합침.
+
+```bash
+python ./src/fuel/csv_to_parquet.py data/population/aggregated
+```
