@@ -36,6 +36,8 @@
 | 16   | Barren or Sparsely Vegetated        | 불모지·희박식생        | `#808080` |
 | 17   | Water Bodies                        | 수체 (호수·강·해안)    | `#0000FF` |
 
+![image](https://github.com/user-attachments/assets/0a9f9f05-de2d-470e-bddf-f7682a7ed47a)
+
 > **0:** 노데이터 또는 미사용(투명)으로 처리되었습니다.
 > 이 표를 바탕으로 `LC_Type1` 값이 `1–5` 이면 **산/산림(forest)** 으로 분류됩니다.
 
